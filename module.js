@@ -15,7 +15,7 @@ const module_name = path.basename(__dirname);
 module.exports.permission_level = 0
 
 module.exports.generate_card = async () => {
-	return (await fs.readFile("./jablko_modules/interface_status/interface_status.html", "utf8")).replace("$MODULE_NAME", module_name);
+	return (await fs.readFile(`${__dirname}/interface_status.html`, "utf8")).replace("$MODULE_NAME", module_name);
 }
 
 module.exports.check_status = async (req, res) => {
