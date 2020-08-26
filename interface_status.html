@@ -1,7 +1,7 @@
 <script> 
 	$MODULE_NAME = {
 		check_status: async function() {
-			const interface_values = document.querySelectorAll("#$MODULE_NAME_card>div>.value");
+			const interface_values = document.querySelectorAll("#$MODULE_NAME>div>.value");
 			const response = await (await fetch("/jablko_modules/$MODULE_NAME/check_status", {method: "POST"})
 				.catch(error => {
 					console.log(error);
@@ -34,7 +34,7 @@
 
 	setInterval($MODULE_NAME.check_status, 15000);
 </script>
-<div id="$MODULE_NAME_card" class="module_card">
+<div id="$MODULE_NAME" class="module_card">
 	<div class="module_header">
 		<h1>Interface Status</h1>
 		<svg class="module_icon" viewBox="0 0 150 150">
@@ -44,23 +44,23 @@
 	<hr>
 	<div class="label_value_pair">
 		<div class="label">Interface Status:</div>
-		<div id="$MODULE_NAME" class="value">N/A</div>
+		<div id="$MODULE_NAME_status" class="value">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">Interface Uptime:</div>
-		<div id="interface_uptime" class="value">N/A</div>
+		<div id="$MODULE_NAME_uptime" class="value">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">Response Time:</div>
-		<div id="interface_response_time" class="value">N/A</div>
+		<div id="$MODULE_NAME_response_time" class="value">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">CPU Temperature:</div>
-		<div id="cpu_temperature" class="value">N/A</div>
+		<div id="$MODULE_NAME_cpu_temperature" class="value">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">Memory Usage:</div>
-		<div id="memory_usage" class="value">N/A</div>
+		<div id="$MODULE_NAME_memory_usage" class="value">N/A</div>
 	</div>
 	<div style="display: flex; justify-content: center; padding: 5px">
 		<button onclick="$MODULE_NAME.restart()" style="color: #f5f6fa; background-color: #0097e6">Restart</button>
