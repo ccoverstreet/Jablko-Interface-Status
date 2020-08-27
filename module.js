@@ -7,16 +7,18 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-
+const module_name = path.basename(__dirname);
 const jablko = require(module.parent.filename);
+const module_config = jablko.jablko_config.jablko_modules[module_name];
+
 const timing = require(`${module.parent.path}/src/timing.js`);
 
-const module_name = path.basename(__dirname);
 
 module.exports.permission_level = 0
 
 module.exports.generate_card = async () => {
-	return (await fs.readFile(`${__dirname}/interface_status.html`, "utf8")).replace(/\$MODULE_NAME/g, module_name);
+	var data = (await fs.readFile(`${__dirname}/interface_status.html`, "utf8")).replace(/\$MODULE_NAME/g, module_name).replace(/\$UPDATE_INTERVAL/g, module_config.update_interval);
+	return ;
 }
 
 module.exports.check_status = async (req, res) => {

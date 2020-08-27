@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ccoverstreet/Jablko-Interface-Status/issues"
   },
-  "homepage": "https://github.com/ccoverstreet/Jablko-Interface-Status#readme"
+  "homepage": "https://github.com/ccoverstreet/Jablko-Interface-Status#readme",
+  "jablko": {
+	  "update_interval": 15000
+  }
 }
