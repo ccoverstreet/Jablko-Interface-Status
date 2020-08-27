@@ -1,5 +1,5 @@
 <script> 
-	$MODULE_NAME = {
+	const $MODULE_NAME = {
 		check_status: async function() {
 			const interface_values = document.querySelectorAll("#$MODULE_NAME>div>.value");
 			const response = await (await fetch("/jablko_modules/$MODULE_NAME/check_status", {method: "POST"})

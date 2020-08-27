@@ -7,8 +7,9 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const jablko = require("../../jablko_interface.js");
-const timing = require("../../src/timing.js")
+
+const jablko = require(module.parent.filename);
+const timing = require(`${module.parent.path}/src/timing.js`);
 
 const module_name = path.basename(__dirname);
 
