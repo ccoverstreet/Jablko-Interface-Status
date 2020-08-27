@@ -13,6 +13,10 @@ const module_config = jablko.jablko_config.jablko_modules[module_name];
 
 const timing = require(`${module.parent.path}/src/timing.js`);
 
+// Check if config is valid
+if (module_config.update_interval == undefined || module_config.update_interval == null) {
+	throw new Error("Incorrect Configuration");
+}
 
 module.exports.permission_level = 0
 
