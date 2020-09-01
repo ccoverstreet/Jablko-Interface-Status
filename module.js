@@ -51,7 +51,7 @@ module.exports.chatbot_uptime = async () => {
 	const hours = Math.floor(raw_uptime / 3600);
 	const minutes = Math.floor((raw_uptime - 3600 * hours) / 60);
 	const seconds = Math.floor(raw_uptime - 3600 * hours - 60 * minutes);
-	const formatted_uptime = `${hours} h ${minutes} m ${seconds}s`;
+	const formatted_uptime = `${hours} h ${minutes} m ${seconds}s.`;
 
 	return responses[Math.floor(Math.random() * responses.length)] + formatted_uptime;
 }
