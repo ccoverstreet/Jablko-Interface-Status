@@ -2,8 +2,8 @@
 	const $MODULE_NAME = {
 		check_status: async function() {
 			const interface_values = document.querySelectorAll("#$MODULE_NAME>div>.value");
-			await (await fetch("/jablko_modules/$MODULE_NAME/check_status", {method: "POST"})
-				.then((data) => {
+			await fetch("/jablko_modules/$MODULE_NAME/check_status", {method: "POST"})
+				.then(async (data) => {
 					const response = await data.json();
 
 					const response_keys = Object.keys(response);
@@ -20,13 +20,13 @@
 						interface_values[i].textContent = "N/A";
 					}
 					return;
-				}));
+				});
 
 			
 		},
 		restart: async function() {
-			await (await fetch("/restart")
-				.then((data) => {
+			await fetch("/restart")
+				.then(async (data) => {
 					const response = await data.json();
 
 					alert(response.message);
@@ -34,7 +34,7 @@
 				.catch(error => {
 					console.log("Error sending restart request");
 					return;
-				}));
+				});
 		}
 	}	
 
