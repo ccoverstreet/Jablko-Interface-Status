@@ -4,7 +4,7 @@
 			const interface_values = document.querySelectorAll("#$MODULE_NAME>div>.value");
 			const response = await (await fetch("/jablko_modules/$MODULE_NAME/check_status", {method: "POST"})
 				.catch(error => {
-					console.log(error);
+					console.log("Error getting status from server");
 					for (var i = 0; i < interface_values.length; i++) {
 						interface_values[i].style.color = "#c23616";
 						interface_values[i].textContent = "N/A";
@@ -22,7 +22,7 @@
 		restart: async function() {
 			const response = await (await fetch("/restart")
 				.catch(error => {
-					console.log(error);
+					console.log("Error sending restart request");
 					return;
 				})).json()
 
