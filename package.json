@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ccoverstreet/Jablko-Interface-Status#readme",
   "jablko": {
-	  "update_interval": 15000
+	  "update_interval": 15000,
 	  "chatbot": {
 		  "uptime": {
 			  "activation_phrase": "uptime",
