@@ -2,7 +2,17 @@
 	const $MODULE_NAME = {
 		check_status: async function() {
 			const interface_values = document.querySelectorAll("#$MODULE_NAME>div>.value");
-			const response = await (await fetch("/jablko_modules/$MODULE_NAME/check_status", {method: "POST"})
+			await (await fetch("/jablko_modules/$MODULE_NAME/check_status", {method: "POST"})
+				.then((data) => {
+					const response = await data.json();
+
+					const response_keys = Object.keys(response);
+
+					for (var i = 0; i < interface_values.length; i++) {
+						interface_values[i].style.color = "#44bd32";
+						interface_values[i].textContent = response[response_keys[i]];
+					}
+				})
 				.catch(error => {
 					console.log("Error getting status from server");
 					for (var i = 0; i < interface_values.length; i++) {
@@ -10,23 +20,21 @@
 						interface_values[i].textContent = "N/A";
 					}
 					return;
-				})).json();
+				}));
 
-			const response_keys = Object.keys(response);
-
-			for (var i = 0; i < interface_values.length; i++) {
-				interface_values[i].style.color = "#44bd32";
-				interface_values[i].textContent = response[response_keys[i]];
-			}
+			
 		},
 		restart: async function() {
-			const response = await (await fetch("/restart")
+			await (await fetch("/restart")
+				.then((data) => {
+					const response = await data.json();
+
+					alert(response.message);
+				})
 				.catch(error => {
 					console.log("Error sending restart request");
 					return;
-				})).json()
-
-			alert(response.message);
+				}));
 		}
 	}	
 
