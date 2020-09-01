@@ -40,7 +40,7 @@ module.exports.check_status = async (req, res) => {
 	res.json({interface_status: "good", interface_uptime: formatted_uptime, interface_response_time: timing.get_handling_time().toFixed(2) + " ms", cpu_temperature: cpu_temp + " C", memory_usage: meminfo_summary});
 }
 
-module.exports.chatbot_uptime = async () {
+module.exports.chatbot_uptime = async () => {
 	const responses = [
 		"I've been up for ",
 		"I've been watching you for ",
