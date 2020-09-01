@@ -39,3 +39,19 @@ module.exports.check_status = async (req, res) => {
 	
 	res.json({interface_status: "good", interface_uptime: formatted_uptime, interface_response_time: timing.get_handling_time().toFixed(2) + " ms", cpu_temperature: cpu_temp + " C", memory_usage: meminfo_summary});
 }
+
+module.exports.chatbot_uptime = async () {
+	const responses = [
+		"I've been up for ",
+		"I've been watching you for ",
+		"This version of me has been alive for "
+	];
+
+	const raw_uptime = (new Date().getTime() - jablko.server_start_time) / 1000;
+	const hours = Math.floor(raw_uptime / 3600);
+	const minutes = Math.floor((raw_uptime - 3600 * hours) / 60);
+	const seconds = Math.floor(raw_uptime - 3600 * hours - 60 * minutes);
+	const formatted_uptime = `${hours} h ${minutes} m ${seconds}s`;
+
+	return responses[Math.floor(Math.random() * responses.length)] + formatted_uptime;
+}
