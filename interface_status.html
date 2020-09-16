@@ -38,6 +38,10 @@
 		}
 	}	
 
+	document.addEventListener("DOMContentLoaded", (event) => {
+		$MODULE_NAME.check_status();
+	});
+
 	setInterval($MODULE_NAME.check_status, $UPDATE_INTERVAL)
 </script>
 <div id="$MODULE_NAME" class="module_card">
@@ -50,23 +54,23 @@
 	<hr>
 	<div class="label_value_pair">
 		<div class="label">Interface Status:</div>
-		<div id="$MODULE_NAME_status" class="value" style="color: var(--color-green)">$STATUS</div>
+		<div id="$MODULE_NAME_status" class="value" style="color: var(--color-green)">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">Interface Uptime:</div>
-		<div id="$MODULE_NAME_uptime" class="value" style="color: var(--color-green)">$UPTIME</div>
+		<div id="$MODULE_NAME_uptime" class="value" style="color: var(--color-green)">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">Response Time:</div>
-		<div id="$MODULE_NAME_response_time" class="value" style="color: var(--color-green)">$RESPONSE_TIME</div>
+		<div id="$MODULE_NAME_response_time" class="value" style="color: var(--color-green)">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">CPU Temperature:</div>
-		<div id="$MODULE_NAME_cpu_temperature" class="value" style="color: var(--color-green)">$CPU_TEMPERATURE</div>
+		<div id="$MODULE_NAME_cpu_temperature" class="value" style="color: var(--color-green)">N/A</div>
 	</div>
 	<div class="label_value_pair">
 		<div class="label">Memory Usage:</div>
-		<div id="$MODULE_NAME_memory_usage" class="value" style="color: var(--color-green)">$MEMORY_USAGE</div>
+		<div id="$MODULE_NAME_memory_usage" class="value" style="color: var(--color-green)">N/A</div>
 	</div>
 	<div style="display: flex; justify-content: center; padding: 5px">
 		<button onclick="$MODULE_NAME.restart()" style="color: #f5f6fa; background-color: #0097e6">Restart</button>

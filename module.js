@@ -21,26 +21,9 @@ if (module_config.update_interval == undefined || module_config.update_interval 
 module.exports.permission_level = 0
 
 module.exports.generate_card = async () => {
-	const raw_uptime = (new Date().getTime() - jablko.server_start_time) / 1000;
-	const hours = Math.floor(raw_uptime / 3600);
-	const minutes = Math.floor((raw_uptime - 3600 * hours) / 60);
-	const seconds = Math.floor(raw_uptime - 3600 * hours - 60 * minutes);
-	const formatted_uptime = `${hours} h ${minutes} m ${seconds}s`;
-
-	const meminfo = (await fs.readFile("/proc/meminfo", "utf8")).split("\n");
-	const total_mem = (parseInt(meminfo[0].split(/[ ]+/)[1]) / 1000000);
-	const meminfo_summary = `${(total_mem - parseFloat(meminfo[2].split(/[ ]+/)[1]) / 1000000).toFixed(2)} GB`
-
-	const cpu_temp = parseInt(await fs.readFile("/sys/class/thermal/thermal_zone0/temp", "utf8")) / 1000;
-
 	return (await fs.readFile(`${__dirname}/interface_status.html`, "utf8"))
 		.replace(/\$MODULE_NAME/g, module_name)
 		.replace(/\$UPDATE_INTERVAL/g, module_config.update_interval)
-		.replace(/\$STATUS/g, "good")
-		.replace(/\$UPTIME/g, formatted_uptime)
-		.replace(/\$RESPONSE_TIME/, timing.get_handling_time().toFixed(2) + " ms")
-		.replace(/\$MEMORY_USAGE/, meminfo_summary)
-		.replace(/\$CPU_TEMPERATURE/, cpu_temp + " C");
 }
 
 module.exports.check_status = async (req, res) => {
